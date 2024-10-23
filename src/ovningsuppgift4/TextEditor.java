@@ -34,9 +34,11 @@ public class TextEditor extends JFrame {
         northPanel.add(printButton);
         northPanel.add(exitButton);
 
-        panel.add(southPanel, BorderLayout.SOUTH);
-        southPanel.setLayout(new FlowLayout());
-        southPanel.add(textArea);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        panel.add(scrollPane, BorderLayout.CENTER);
 
         openButton.addMouseListener(new OpenFile(fileNameTextField, textArea));
         saveButton.addMouseListener(new SaveFile(fileNameTextField, textArea));
